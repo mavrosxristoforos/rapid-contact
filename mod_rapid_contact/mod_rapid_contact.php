@@ -62,6 +62,8 @@ else {
   }
 }
 
+$url = htmlentities($url, ENT_COMPAT, "UTF-8");
+
 $myError = '';
 $CORRECT_ANTISPAM_ANSWER = '';
 $CORRECT_EMAIL = '';
@@ -69,15 +71,15 @@ $CORRECT_SUBJECT = '';
 $CORRECT_MESSAGE = '';
 
 if (isset($_POST["rp_email"])) {
-  $CORRECT_SUBJECT = $_POST["rp_subject"];
-  $CORRECT_MESSAGE = $_POST["rp_message"];
+  $CORRECT_SUBJECT = htmlentities($_POST["rp_subject"], ENT_COMPAT, "UTF-8");
+  $CORRECT_MESSAGE = htmlentities($_POST["rp_message"], ENT_COMPAT, "UTF-8");
   // check anti-spam
   if ($enable_anti_spam) {
     if ($_POST["rp_anti_spam_answer"] != $myAntiSpamAnswer) {
       $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
     }
     else {
-      $CORRECT_ANTISPAM_ANSWER = $_POST["rp_anti_spam_answer"];
+      $CORRECT_ANTISPAM_ANSWER = htmlentities($_POST["rp_anti_spam_answer"], ENT_COMPAT, "UTF-8");
     }
   }
   // check email
@@ -88,7 +90,7 @@ if (isset($_POST["rp_email"])) {
     $myError = '<span style="color: ' . $error_text_color . ';">' . $invalidEmail . '</span>';
   }
   else {
-    $CORRECT_EMAIL = $_POST["rp_email"];
+    $CORRECT_EMAIL = htmlentities($_POST["rp_email"], ENT_COMPAT, "UTF-8");
   }
 
   if ($myError == '') {
