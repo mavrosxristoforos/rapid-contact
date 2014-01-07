@@ -97,7 +97,7 @@ if (isset($_POST["rp_email"])) {
     $mySubject = $_POST["rp_subject"];
     $myMessage = 'You received a message from '. $_POST["rp_email"] ."\n\n". $_POST["rp_message"];
 
-    $mailSender = &JFactory::getMailer();
+    $mailSender = JFactory::getMailer();
     $mailSender->addRecipient($recipient);
 
     $mailSender->setSender(array($fromEmail,$fromName));
