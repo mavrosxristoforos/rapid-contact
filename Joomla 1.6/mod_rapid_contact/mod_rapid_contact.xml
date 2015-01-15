@@ -78,7 +78,7 @@
         label="Wrong Anti-Spam Text"
         description="The text to show when the user fails to pass the anti-spam check"/>
         <field name="pre_text"
-        type="text"
+        type="text" filter="raw"
         default=""
         label="Small Intro Text"
         description="A small text shown before (above) the message form. HTML is welcome!" />        
@@ -96,22 +96,22 @@
         label="Error Text Color"
         description="The color of the Error text." />          
         <field name="email_width"
-        type="text"
+        type="text" filter="raw"
         default="15"
         label="Email Width"
         description="Width in letters of the email input" />         
         <field name="subject_width"
-        type="text"
+        type="text" filter="raw"
         default="15"
         label="Subject Width"
         description="Width in letters of the subject input" />
         <field name="message_width"
-        type="text"
+        type="text" filter="raw"
         default="13"
         label="Message Width"
         description="Width in columns of the message textarea" />        
         <field name="button_width"
-        type="text"
+        type="text" filter="raw"
         default="100"
         label="Button Width"
         description="Width in percent of the send button" />     
