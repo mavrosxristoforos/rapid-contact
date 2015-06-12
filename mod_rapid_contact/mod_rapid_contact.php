@@ -75,7 +75,7 @@ if (isset($_POST["rp_email"])) {
   $CORRECT_MESSAGE = htmlentities($_POST["rp_message"], ENT_COMPAT, "UTF-8");
   // check anti-spam
   if ($enable_anti_spam) {
-    if ($_POST["rp_anti_spam_answer"] != $myAntiSpamAnswer) {
+    if (strtolower($_POST["rp_anti_spam_answer"]) != strtolower($myAntiSpamAnswer)) {
       $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
     }
     else {
