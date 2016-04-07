@@ -101,7 +101,12 @@ if (isset($_POST["rp_email"])) {
     $mailSender->addRecipient($recipient);
 
     $mailSender->setSender(array($fromEmail,$fromName));
-    $mailSender->addReplyTo(array( $_POST["rp_email"], '' ));
+    if(version_compare(JVERSION, '3.5', 'ge')) {
+      $mailSender->addReplyTo($_POST["rp_email"], $fromName);
+    }
+    else {
+      $mailSender->addReplyTo(array( $_POST["rp_email"], $fromName ));
+    }
 
     $mailSender->setSubject($mySubject);
     $mailSender->setBody($myMessage);
