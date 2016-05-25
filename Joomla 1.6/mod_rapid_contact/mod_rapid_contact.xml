@@ -7,7 +7,7 @@
     <license>GNU General Public License</license>
     <authorEmail>mavrosxristoforos@gmail.com</authorEmail>
     <authorUrl>http://www.mavrosxristoforos.com/</authorUrl>
-    <version>1.2</version>
+    <version>1.3</version>
     <description>Rapid Contact. Lightweight, fast and easy, configuring a contact form, was never a pleasure before.</description>
     <files>
         <filename module="mod_rapid_contact">mod_rapid_contact.php</filename>
@@ -29,22 +29,22 @@
         default="rapid_contact@yoursite.com"
         label="Mail From Email"
         description="The email of the message's sender" />          
-
-        <field name="spacer1" type="spacer" hr="true"/>
-        <field name="spacert2" type="spacer" class="text" label="&lt;strong&gt;Text Parameters&lt;/strong&gt;"/>  
+      </fieldset>
+      
+      <fieldset name="texts" label="Text Options">
         <field name="email_label"
         type="text"
-        default="Email:"
+        default="email@site.com"
         label="Email Label"
         description="The label next to the email input." />        
         <field name="subject_label"
         type="text"
-        default="Subject:"
+        default="Subject"
         label="Subject Label"
         description="The label next to the subject input." />
         <field name="message_label"
         type="text"
-        default="Message:"
+        default="Your Message"
         label="Message Label"
         description="The label next to the message text area." />  
         <field name="button_text"
@@ -82,12 +82,12 @@
         default=""
         label="Small Intro Text"
         description="A small text shown before (above) the message form. HTML is welcome!" />        
-        
-        <field name="spacer2" type="spacer" hr="true"/>
-        <field name="spacert3" type="spacer" class="text" label="&lt;strong&gt;Size and Color Parameters&lt;/strong&gt;"/>
+      </fieldset>
+      
+      <fieldset name="size_color" label="Size &amp; Color">
         <field name="thank_text_color"
         type="text"
-        default="#FF0000"
+        default="#000000"
         label="Text Color"
         description="The color of the Thank you text." />  
         <field name="error_text_color"
@@ -97,78 +97,43 @@
         description="The color of the Error text." />          
         <field name="email_width"
         type="text" filter="raw"
-        default="15"
+        default="10"
         label="Email Width"
         description="Width in letters of the email input" />         
         <field name="subject_width"
         type="text" filter="raw"
-        default="15"
+        default="10"
         label="Subject Width"
         description="Width in letters of the subject input" />
         <field name="message_width"
-        type="text" filter="raw"
-        default="13"
+        type="text" default="7"
         label="Message Width"
-        description="Width in columns of the message textarea" />        
-        <field name="button_width"
-        type="text" filter="raw"
-        default="100"
-        label="Button Width"
-        description="Width in percent of the send button" />     
+        description="Width in columns of the message textarea" />   
         <field name="label_pos"
-        type="radio" default="0"
-        label="Label Position"
-        description="The position of the labels relative to the inputboxes">
-          <option value="0">Left</option>
+        type="radio" default="2"
+        label="Label Position" class="btn-group"
+        description="The position of the labels">
           <option value="1">Top</option>
+          <option value="2">As Placeholders</option>
         </field>
         <field name="addcss"
-        type="text"
-        default="div.rapid_contact tr, div.rapid_contact td { border: none; padding: 3px; }"
+        type="text" default=""
         label="Custom CSS"
-        description="Custom CSS for the form." />          
-        
-        <field name="spacer3" type="spacer" hr="true"/>
-        <field name="spacert4" type="spacer" class="text" label="&lt;strong&gt;URL Parameters&lt;/strong&gt;"/>
-        <field name="exact_url"
-        type="radio"
-        default="1"
-        label="Exact URL"
-        description="This is an advanced option about the url retrieval way. If your site is http and your server/host supports https this should be No.">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-        </field>     
-        <field name="disable_https"
-        type="radio"
-        default="1"
-        label="Disable HTTPS"
-        description="This is an advanced option about the url retrieval way. Please enable it if Rapid Contact posts in https and your site is http.">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-        </field>       
-        <field name="fixed_url"
-        type="radio"
-        default="0"
-        label="Fixed URL"
-        description="A simple solution to people that want to use Rapid Contact in an exact page. Change this to Yes and write the URL of Rapid Contact in the Fixed URL Address parameter">
-            <option value="0">No</option>
-            <option value="1">Yes</option>        
-        </field>        
-        <field name="fixed_url_address"
-        type="text"
-        default=""
-        label="Fixed URL Address"
-        description="If fixed url is true, this address is used for Rapid Contact to post itself."/>   
-        
-        <field name="spacer4" type="spacer" hr="true"/>
-        <field name="spacert5" type="spacer" class="text" label="&lt;strong&gt;Anti-spam Parameters&lt;/strong&gt;"/>   
+        description="Custom CSS for the form." />
+      </fieldset>
+      
+      <fieldset name="customfields" label="Custom Fields">
+        <field name="rpxadd" type="spacer" class="text" label="&lt;h2&gt;Extend your form capabilities&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://mavrosxristoforos.com/images/rpx_ad.png&quot; alt=&quot;Rapid Contact Ex&quot; align=&quot;right&quot;/&gt;Rapid Contact Ex is a fully customizable Contact Form generator which allows you to create any form you may require, from very simple contact forms, to complex business contact forms with multiple email recipients, or even file-upload forms, without writing one line of code.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Unlimited Fields&lt;/li&gt;&lt;li&gt;Multiple Email Recipients&lt;/li&gt;&lt;li&gt;Multiple Forms per Site&lt;/li&gt;&lt;li&gt;Back-end Field Manager&lt;/li&gt;&lt;li&gt;Various Field types: (Text, Textarea, Email, Telephone, Postal Code, File Upload, DropDowns, Checkboxes, Hidden, Email Groups)&lt;/li&gt;&lt;li&gt;Custom HTML or text between fields to customize your form, completely!&lt;/li&gt;&lt;li&gt;Unlimited Websites License&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Above all that, Rapid Contact Ex is &lt;strong&gt;one of the cheapest (if not the cheapest) professional contact form generator&lt;/strong&gt;, while it includes all the fancy features you want to create a contact form for your site. With a 30-day money-back guarantee, why not choose it to create your forms?&lt;/p&gt;&lt;br/&gt;&lt;a href=&quot;http://mavrosxristoforos.com/joomla-extensions/commercial/rapid-contact-ex&quot; target=&quot;_blank&quot;&gt;Learn more!&lt;/a&gt;"/>
+      </fieldset>
+      
+      <fieldset name="antispam" label="Anti-Spam Options">   
         <field name="enable_anti_spam"
-        type="radio"
-        default="1"
-        label="Enable Anti-spam"
+        type="radio" default="1"
+        label="Anti-spam" class="btn-group"
         description="Enable this to use the anti-spam question for anti-spam control">
             <option value="0">No</option>
-            <option value="1">Yes</option>
+            <option value="1">Anti-Spam Question</option>
+            <option value="2">Captcha Plugin</option>
         </field>          
         <field name="anti_spam_q"
                type="text"
@@ -182,30 +147,41 @@
                description="The correct answer to the anti-spam question" />    
         <field name="anti_spam_position"
         type="radio"
-        default="0"
+        default="1" class="btn-group"
         label="Anti-Spam Position"
         description="The anti-spam position, relative to the Rapid Contact form.">
             <option value="0">Before</option>
             <option value="1">After</option>        
-        </field>                   
-               
-        <field name="spacer5" type="spacer" hr="true"/> 
-        <field name="spacert6" type="spacer" class="text" label="&lt;strong&gt;Module Class Suffix Parameter&lt;/strong&gt;"/>
+        </field>
+    </fieldset>
+    <fieldset name="advanced">
         <field name="moduleclass_sfx"
         type="text"
         default=""
         label="Module Class Suffix"
-        description="If you want to apply a custom style, change this class suffix." />                  
+        description="If you want to apply a custom style, change this class suffix." />
+        <field name="fixed_url"
+        type="radio"
+        default="0" class="btn-group btn-group-yesno"
+        label="Fixed URL"
+        description="A simple solution to people that want to use Rapid Contact in an exact page. Change this to Yes and write the URL of Rapid Contact in the Fixed URL Address parameter">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>        
+        </field>        
+        <field name="fixed_url_address"
+        type="text"
+        default=""
+        label="Fixed URL Address"
+        description="If fixed url is true, this address is used for Rapid Contact to post itself."/> 
+	<field name="cache" type="list"
+          default="1" label="Caching"
+	  description="Select whether to cache the content of this module">
+	    <option value="1">Use global</option>
+	    <option value="0">No caching</option>
+	</field>
+	<field name="cache_time" type="text"
+	  default="900" label="Cache Time"
+	  description="The time before the module is recached" />
     </fieldset>
-		<fieldset name="advanced">
-		  <field name="cache" type="list"
-		  default="1" label="Caching"
-		  description="Select whether to cache the content of this module">
-		    <option value="1">Use global</option>
-		    <option value="0">No caching</option>
-		  </field>
-		  <field name="cache_time" type="text"
-		  default="900" label="Cache Time"
-		  description="The time before the module is recached" />
-		</fieldset></fields></config>     
+  </fields></config>     
 </extension>
