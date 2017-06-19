@@ -7,11 +7,14 @@
     <license>GNU General Public License</license>
     <authorEmail>mavrosxristoforos@gmail.com</authorEmail>
     <authorUrl>http://www.mavrosxristoforos.com/</authorUrl>
-<version>1.3.12</version>
+<version>1.4.12</version>
     <description>Rapid Contact. Lightweight, fast and easy, configuring a contact form, was never a pleasure before.</description>
     <files>
         <filename module="mod_rapid_contact">mod_rapid_contact.php</filename>
     </files>
+   <updateservers>
+      <server type="extension" priority="1" name="Rapid Contact Updates">http://mavrosxristoforos.com/index.php?option=com_extensionupdater&amp;extension=rapid_contact</server>
+   </updateservers>
     <config><fields name="params"><fieldset name="basic">
         <field name="spacert1" type="spacer" class="text" label="&lt;strong&gt;Email Parameters&lt;/strong&gt;"/> 
         <field name="email_recipient"
