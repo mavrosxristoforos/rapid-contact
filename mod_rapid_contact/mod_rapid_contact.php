@@ -182,5 +182,5 @@ if ($anti_spam_position == 1) {
 print '<div class="input-group">';
 print '<input class="rapid_contact btn btn-primary button ' . $mod_class_suffix . '" type="submit" value="' . $buttonText . '"/>';
 print '</div>';
-print '</div></form></div>' . "\n";
+print '</div></form></div>';
 return true;
