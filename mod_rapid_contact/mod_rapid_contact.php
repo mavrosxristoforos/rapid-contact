@@ -5,8 +5,8 @@
 # author    Christopher Mavros - Mavrosxristoforos.com
 # copyright Copyright (C) 2008 Mavrosxristoforos.com. All Rights Reserved.
 # @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
-# Websites: http://www.mavrosxristoforos.com
-# Technical Support:  Forum - http://www.mavrosxristoforos.com/support/forum
+# Websites: https://mavrosxristoforos.com
+# Technical Support:  Forum - https://mavrosxristoforos.com/support/forum
 -------------------------------------------------------------------------*/
 
 // no direct access
@@ -14,8 +14,8 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 //Email Parameters
 $recipient = $params->get('email_recipient', 'email@email.com');
-$fromName = @$params->get('from_name', 'Rapid Contact');
-$fromEmail = @$params->get('from_email', 'rapid_contact@yoursite.com');
+$fromName = $params->get('from_name', 'Rapid Contact');
+$fromEmail = $params->get('from_email', 'rapid_contact@yoursite.com');
 
 // Text Parameters
 $myEmailLabel = $params->get('email_label', 'email@site.com');
@@ -43,6 +43,7 @@ $enable_anti_spam = $params->get('enable_anti_spam', '1');
 $myAntiSpamQuestion = $params->get('anti_spam_q', 'How many eyes has a typical person?');
 $myAntiSpamAnswer = $params->get('anti_spam_a', '2');
 $anti_spam_position = $params->get('anti_spam_position', 0);
+$please_complete_captcha_text = $params->get('please_complete_captcha_text', 'Please complete the Captcha');
 
 // Module Class Suffix Parameter
 $mod_class_suffix = $params->get('moduleclass_sfx', '');
@@ -69,12 +70,16 @@ if (isset($_POST["rp_email"])) {
     }
   }
   else if ($enable_anti_spam == '2') {
-    // check captcha plugin.
-    JPluginHelper::importPlugin('captcha');
-    $d = JEventDispatcher::getInstance();
-    $res = $d->trigger('onCheckAnswer', 'not_used');
-    if( (!isset($res[0])) || (!$res[0]) ){
-      $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
+    if (JFactory::getConfig()->get('captcha') != '0') {
+      $captcha = JCaptcha::getInstance(JFactory::getConfig()->get('captcha'));
+      try {
+        if (!$captcha->checkAnswer('rp_recaptcha')) {
+          $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
+        }
+      }
+      catch(RuntimeException $e) {
+        $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
+      }
     }
   }
   // check email
@@ -137,9 +142,23 @@ $document->addStyleDeclaration('
 if ($params->get('addcss', '') != '') {
   $document->addStyleDeclaration($params->get('addcss', ''));
 }
+$document->addScriptDeclaration('
+  function rp_checkCaptcha(form_id) {
+    result = true;
+    if (document.getElementById(form_id+"_hasCaptcha")) {
+      if ((grecaptcha) && (jQuery(".g-recaptcha").length == 1)) { // We only know how to deal with Google ReCaptcha, and only one of it in JS
+        if (grecaptcha.getResponse().length == 0) {
+          alert("'.$please_complete_captcha_text.'");
+          result = false;
+        }
+      }
+    }
+    return result;
+  }
+');
 
 $form_id = 'rp_'.uniqid();
-print '<div class="rapid_contact ' . $mod_class_suffix . '"><form '.$url.' id="'.$form_id.'" method="post">' . "\n" .
+print '<div class="rapid_contact ' . $mod_class_suffix . '"><form '.$url.' id="'.$form_id.'" method="post" onSubmit="return rp_checkCaptcha(\''.$form_id.'\');">' . "\n" .
       '<div class="rapid_contact intro_text ' . $mod_class_suffix . '">'.$pre_text.'</div>' . "\n";
 
 if ($myError != '') { print $myError; }
@@ -149,6 +168,7 @@ print '<div class="rapid_contact_form" id="rapid_contact_form_'.$form_id.'">';
 $anti_spam_field = '';
 if ($enable_anti_spam == '2') {
   $anti_spam_field = (JFactory::getConfig()->get('captcha') != '0') ? JCaptcha::getInstance(JFactory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha') : '';
+  $anti_spam_field .= '<input type="hidden" name="'.$form_id.'_hasCaptcha" id="'.$form_id.'_hasCaptcha" value="true"/>';
 }
 else if ($enable_anti_spam == '1') {
   // Label as Placeholder option is intentionally overlooked.

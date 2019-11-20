@@ -6,22 +6,22 @@
     <copyright>Copyright (C) 2009-2011 Christopher Mavros. All rights reserved.</copyright>
     <license>GNU General Public License</license>
     <authorEmail>mavrosxristoforos@gmail.com</authorEmail>
-    <authorUrl>http://www.mavrosxristoforos.com/</authorUrl>
-<version>1.4.14</version>
+    <authorUrl>https://mavrosxristoforos.com/</authorUrl>
+<version>1.4.18</version>
     <description>Rapid Contact. Lightweight, fast and easy, configuring a contact form, was never a pleasure before.</description>
     <files>
         <filename module="mod_rapid_contact">mod_rapid_contact.php</filename>
     </files>
    <updateservers>
-      <server type="extension" priority="1" name="Rapid Contact Updates">http://mavrosxristoforos.com/index.php?option=com_extensionupdater&amp;extension=rapid_contact</server>
+      <server type="extension" priority="1" name="Rapid Contact Updates">https://mavrosxristoforos.com/index.php?option=com_extensionupdater&amp;extension=rapid_contact</server>
    </updateservers>
     <config><fields name="params"><fieldset name="basic">
-        <field name="spacert1" type="spacer" class="text" label="&lt;strong&gt;Email Parameters&lt;/strong&gt;"/> 
+        <field name="spacert1" type="spacer" class="text" label="&lt;strong&gt;Email Parameters&lt;/strong&gt;"/>
         <field name="email_recipient"
         type="text"
         default="email@email.com"
-        label="Email Recipient"        
-        description="The recipient of the contact mail." />         
+        label="Email Recipient"
+        description="The recipient of the contact mail." />
         <field name="from_name"
         type="text"
         default="Rapid Contact"
@@ -31,15 +31,14 @@
         type="text"
         default="rapid_contact@yoursite.com"
         label="Mail From Email"
-        description="The email of the message's sender" />          
+        description="The email of the message's sender" />
       </fieldset>
-      
       <fieldset name="texts" label="Text Options">
         <field name="email_label"
         type="text"
         default="email@site.com"
         label="Email Label"
-        description="The label next to the email input." />        
+        description="The label next to the email input." />
         <field name="subject_label"
         type="text"
         default="Subject"
@@ -49,22 +48,22 @@
         type="text"
         default="Your Message"
         label="Message Label"
-        description="The label next to the message text area." />  
+        description="The label next to the message text area." />
         <field name="button_text"
         type="text"
         default="Send Message"
         label="Button Text"
-        description="The text on the send button" /> 
+        description="The text on the send button" />
         <field name="page_text"
         type="text"
         default="Thank you for your contact."
         label="Thank you text"
-        description="The text displayed to the user when he sends a message" /> 
+        description="The text displayed to the user when he sends a message" />
         <field name="error_text"
         type="text"
         default="Your message could not be sent. Please try again."
         label="Error page text"
-        description="The text displayed to the user when the message fails to be sent" />           
+        description="The text displayed to the user when the message fails to be sent" />
         <field name="no_email"
         type="text"
         default="Please write your email"
@@ -84,25 +83,24 @@
         type="text" filter="raw"
         default=""
         label="Small Intro Text"
-        description="A small text shown before (above) the message form. HTML is welcome!" />        
+        description="A small text shown before (above) the message form. HTML is welcome!" />
       </fieldset>
-      
       <fieldset name="size_color" label="Size &amp; Color">
         <field name="thank_text_color"
         type="text"
         default="#000000"
         label="Text Color"
-        description="The color of the Thank you text." />  
+        description="The color of the Thank you text." />
         <field name="error_text_color"
         type="text"
         default="#FF0000"
         label="Error Text Color"
-        description="The color of the Error text." />          
+        description="The color of the Error text." />
         <field name="email_width"
         type="text" filter="raw"
         default="10"
         label="Email Width"
-        description="Width in letters of the email input" />         
+        description="Width in letters of the email input" />
         <field name="subject_width"
         type="text" filter="raw"
         default="10"
@@ -111,7 +109,7 @@
         <field name="message_width"
         type="text" default="7"
         label="Message Width"
-        description="Width in columns of the message textarea" />   
+        description="Width in columns of the message textarea" />
         <field name="label_pos"
         type="radio" default="2"
         label="Label Position" class="btn-group"
@@ -124,12 +122,10 @@
         label="Custom CSS"
         description="Custom CSS for the form." />
       </fieldset>
-      
       <fieldset name="customfields" label="Custom Fields">
-        <field name="rpxadd" type="spacer" class="text" label="&lt;h2&gt;Extend your form capabilities&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://mavrosxristoforos.com/images/rpx_ad.png&quot; alt=&quot;Rapid Contact Ex&quot; align=&quot;right&quot;/&gt;Rapid Contact Ex is a fully customizable Contact Form generator which allows you to create any form you may require, from very simple contact forms, to complex business contact forms with multiple email recipients, or even file-upload forms, without writing one line of code.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Unlimited Fields&lt;/li&gt;&lt;li&gt;Multiple Email Recipients&lt;/li&gt;&lt;li&gt;Multiple Forms per Site&lt;/li&gt;&lt;li&gt;Back-end Field Manager&lt;/li&gt;&lt;li&gt;Various Field types: (Text, Textarea, Email, Telephone, Postal Code, File Upload, DropDowns, Checkboxes, Hidden, Email Groups)&lt;/li&gt;&lt;li&gt;Custom HTML or text between fields to customize your form, completely!&lt;/li&gt;&lt;li&gt;Unlimited Websites License&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Above all that, Rapid Contact Ex is &lt;strong&gt;one of the cheapest (if not the cheapest) professional contact form generator&lt;/strong&gt;, while it includes all the fancy features you want to create a contact form for your site. With a 30-day money-back guarantee, why not choose it to create your forms?&lt;/p&gt;&lt;br/&gt;&lt;a href=&quot;http://mavrosxristoforos.com/joomla-extensions/commercial/rapid-contact-ex&quot; target=&quot;_blank&quot;&gt;Learn more!&lt;/a&gt;"/>
+        <field name="rpxadd" type="spacer" class="text" label="&lt;h2&gt;Extend your form capabilities&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://mavrosxristoforos.com/images/rpx_ad.png&quot; alt=&quot;Rapid Contact Ex&quot; align=&quot;right&quot;/&gt;Rapid Contact Ex is a fully customizable Contact Form generator which allows you to create any form you may require, from very simple contact forms, to complex business contact forms with multiple email recipients, or even file-upload forms, without writing one line of code.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Unlimited Fields&lt;/li&gt;&lt;li&gt;Multiple Email Recipients&lt;/li&gt;&lt;li&gt;Multiple Forms per Site&lt;/li&gt;&lt;li&gt;Back-end Field Manager&lt;/li&gt;&lt;li&gt;Various Field types: (Text, Textarea, Email, Telephone, Postal Code, File Upload, DropDowns, Checkboxes, Hidden, Email Groups)&lt;/li&gt;&lt;li&gt;Custom HTML or text between fields to customize your form, completely!&lt;/li&gt;&lt;li&gt;Unlimited Websites License&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Above all that, Rapid Contact Ex is &lt;strong&gt;one of the cheapest (if not the cheapest) professional contact form generator&lt;/strong&gt;, while it includes all the fancy features you want to create a contact form for your site. With a 30-day money-back guarantee, why not choose it to create your forms?&lt;/p&gt;&lt;br/&gt;&lt;a href=&quot;https://mavrosxristoforos.com/joomla-extensions/commercial/rapid-contact-ex&quot; target=&quot;_blank&quot;&gt;Learn more!&lt;/a&gt;"/>
       </fieldset>
-      
-      <fieldset name="antispam" label="Anti-Spam Options">   
+      <fieldset name="antispam" label="Anti-Spam Options">
         <field name="enable_anti_spam"
         type="radio" default="1"
         label="Anti-spam" class="btn-group"
@@ -137,7 +133,7 @@
             <option value="0">No</option>
             <option value="1">Anti-Spam Question</option>
             <option value="2">Captcha Plugin</option>
-        </field>          
+        </field>
         <field name="anti_spam_q"
                type="text"
                default="How many eyes has a typical person?"
@@ -147,15 +143,20 @@
                type="text"
                default="2"
                label="Anti-Spam Answer"
-               description="The correct answer to the anti-spam question" />    
+               description="The correct answer to the anti-spam question" />
         <field name="anti_spam_position"
         type="radio"
         default="1" class="btn-group"
         label="Anti-Spam Position"
         description="The anti-spam position, relative to the Rapid Contact form.">
             <option value="0">Before</option>
-            <option value="1">After</option>        
+            <option value="1">After</option>
         </field>
+        <field name="please_complete_captcha_text"
+               type="text"
+               default="Please complete the captcha"
+               label="Please Complete Captcha Text"
+               description="A small text to show when the user has not completed the captcha" />
     </fieldset>
     <fieldset name="advanced">
         <field name="moduleclass_sfx"
@@ -169,22 +170,22 @@
         label="Fixed URL"
         description="A simple solution to people that want to use Rapid Contact in an exact page. Change this to Yes and write the URL of Rapid Contact in the Fixed URL Address parameter">
             <option value="0">JNO</option>
-            <option value="1">JYES</option>        
-        </field>        
+            <option value="1">JYES</option>
+        </field>
         <field name="fixed_url_address"
         type="text"
         default=""
         label="Fixed URL Address"
-        description="If fixed url is true, this address is used for Rapid Contact to post itself."/> 
-	<field name="cache" type="list"
+        description="If fixed url is true, this address is used for Rapid Contact to post itself."/>
+  <field name="cache" type="list"
           default="1" label="Caching"
-	  description="Select whether to cache the content of this module">
-	    <option value="1">Use global</option>
-	    <option value="0">No caching</option>
-	</field>
-	<field name="cache_time" type="text"
-	  default="900" label="Cache Time"
-	  description="The time before the module is recached" />
+    description="Select whether to cache the content of this module">
+      <option value="1">Use global</option>
+      <option value="0">No caching</option>
+  </field>
+  <field name="cache_time" type="text"
+    default="900" label="Cache Time"
+    description="The time before the module is recached" />
     </fieldset>
-  </fields></config>     
+  </fields></config>
 </extension>
