@@ -1,0 +1,32 @@
+name: CD
+
+on:
+  push:
+    paths-ignore:
+    - '.github/**'
+    - '.git**'
+    - '**/readme.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Build Joomla Package
+      id: jxbuild
+      uses: mavrosxristoforos/jxb@1.0
+      with:
+        build-file: 'build_rapid_contact.jxb'
+    - name: Get XML
+      id: getxml
+      uses: mavrosxristoforos/get-xml-info@1.0
+      with:
+        xml-file: 'mod_rapid_contact/mod_rapid_contact.xml'
+        xpath: '//version'
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: 'mod_rapid_contact.zip'
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ steps.getxml.outputs.info }}
