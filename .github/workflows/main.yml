@@ -5,7 +5,7 @@ on:
     paths-ignore:
     - '.github/**'
     - '.git**'
-    - '**readme.md'
+    - '**README.md'
 
 jobs:
   build:
