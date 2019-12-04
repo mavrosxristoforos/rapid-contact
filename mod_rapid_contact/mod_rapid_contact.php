@@ -136,7 +136,7 @@ if ($recipient === "email@email.com") {
 
 $document = JFactory::getDocument();
 $document->addStyleDeclaration('
-  .rapid_contact .form-control { max-width: 95%; }
+  .rapid_contact .form-control { max-width: 95%; margin-bottom: 8px; }
   .rapid_contact .g-recaptcha { margin-bottom: 10px; max-width: 95%; }
 ');
 if ($params->get('addcss', '') != '') {

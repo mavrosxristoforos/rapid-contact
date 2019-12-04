@@ -1,4 +1,3 @@
 INCVERSION:mod_rapid_contact/mod_rapid_contact.xml
-DELETE:mod_rapid_contact_joomla2.5_and3.0.zip
+DELETE:mod_rapid_contact.zip
 ZIPDIR:mod_rapid_contact
-RENAME:mod_rapid_contact.zip mod_rapid_contact_joomla2.5_and3.0.zip
