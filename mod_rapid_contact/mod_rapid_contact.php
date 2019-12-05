@@ -157,7 +157,7 @@ $document->addScriptDeclaration('
   }
 ');
 
-$form_id = 'rp_'.uniqid();
+$form_id = 'rp_'.random_int(1,999999);
 print '<div class="rapid_contact ' . $mod_class_suffix . '"><form '.$url.' id="'.$form_id.'" method="post" onSubmit="return rp_checkCaptcha(\''.$form_id.'\');">' . "\n" .
       '<div class="rapid_contact intro_text ' . $mod_class_suffix . '">'.$pre_text.'</div>' . "\n";
 
