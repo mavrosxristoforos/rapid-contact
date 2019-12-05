@@ -7,7 +7,7 @@
     <license>GNU General Public License</license>
     <authorEmail>mavrosxristoforos@gmail.com</authorEmail>
     <authorUrl>https://mavrosxristoforos.com/</authorUrl>
-<version>1.4.21</version>
+<version>1.4.22</version>
     <description>Rapid Contact. Lightweight, fast and easy, configuring a contact form, was never a pleasure before.</description>
     <files>
         <filename module="mod_rapid_contact">mod_rapid_contact.php</filename>
