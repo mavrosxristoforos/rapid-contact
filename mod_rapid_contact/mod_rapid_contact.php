@@ -73,7 +73,7 @@ if (isset($_POST["rp_email"])) {
     if (JFactory::getConfig()->get('captcha') != '0') {
       $captcha = JCaptcha::getInstance(JFactory::getConfig()->get('captcha'));
       try {
-        if (!$captcha->checkAnswer('rp_recaptcha')) {
+        if (!$captcha->checkAnswer(JFactory::getApplication()->input->get('rp_recaptcha', null, 'string'))) {
           $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
         }
       }
