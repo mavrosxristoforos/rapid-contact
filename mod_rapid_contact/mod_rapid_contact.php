@@ -87,7 +87,7 @@ if (isset($_POST["rp_email"])) {
     $myError = '<span style="color: ' . $error_text_color . ';">' . $noEmail . '</span>';
     $email_class = ' has-error';
   }
-  if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/", strtolower($_POST["rp_email"]))) {
+  if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,24})$/", strtolower($_POST["rp_email"]))) {
     $myError = '<span style="color: ' . $error_text_color . ';">' . $invalidEmail . '</span>';
     $email_class = ' has-error';
   }
