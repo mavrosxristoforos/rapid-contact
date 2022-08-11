@@ -7,7 +7,7 @@
     <license>GNU General Public License</license>
     <authorEmail>mavrosxristoforos@gmail.com</authorEmail>
     <authorUrl>https://mavrosxristoforos.com/</authorUrl>
-<version>1.4.24</version>
+<version>1.4.26</version>
     <description>Rapid Contact. Lightweight, fast and easy, configuring a contact form, was never a pleasure before.</description>
     <files>
         <filename module="mod_rapid_contact">mod_rapid_contact.php</filename>
@@ -33,6 +33,7 @@
         <field name="invalid_email" type="text" default="Please write a valid email" label="Invalid Email Error Message" description="The error message when the user writes an invalid email" />
         <field name="wrong_antispam" type="text" default="Wrong Anti-Spam Answer" label="Wrong Anti-Spam Text" description="The text to show when the user fails to pass the anti-spam check"/>
         <field name="pre_text" type="text" filter="raw" default="" label="Small Intro Text" description="A small text shown before (above) the message form. HTML is welcome!" />
+        <field name="email_pretext" type="text" filter="raw" default="You received a message from " label="Email Pre-Text" description="A small text shown at the beginning of the sent email. HTML is welcome!" />
       </fieldset>
       <fieldset name="size_color" label="Size &amp; Color">
         <field name="thank_text_color" type="text" default="#000000" label="Text Color" description="The color of the Thank you text." />

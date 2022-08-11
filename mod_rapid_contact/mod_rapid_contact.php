@@ -28,6 +28,7 @@ $noEmail = $params->get('no_email', 'Please write your email');
 $invalidEmail = $params->get('invalid_email', 'Please write a valid email');
 $wrongantispamanswer = $params->get('wrong_antispam', 'Wrong anti-spam answer');
 $pre_text = $params->get('pre_text', '');
+$email_pretext = $params->get('email_pretext', 'You received a message from ');
 
 // Size and Color Parameters
 $thanksTextColor = $params->get('thank_text_color', '#FF0000');
@@ -97,7 +98,7 @@ if (isset($_POST["rp_email"])) {
 
   if ($myError == '') {
     $mySubject = $_POST["rp_subject"];
-    $myMessage = 'You received a message from '. $_POST["rp_email"] ."\n\n". $_POST["rp_message"];
+    $myMessage = $email_pretext. $_POST["rp_email"] ."\n\n". $_POST["rp_message"];
 
     $mailSender = JFactory::getMailer();
     $mailSender->addRecipient($recipient);
