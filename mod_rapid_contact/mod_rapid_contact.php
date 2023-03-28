@@ -36,7 +36,6 @@ $error_text_color = $params->get('error_text_color', '#FF0000');
 $emailWidth = $params->get('email_width', '15');
 $subjectWidth = $params->get('subject_width', '15');
 $messageWidth = $params->get('message_width', '13');
-$buttonWidth = $params->get('button_width', '100');
 $label_pos = $params->get('label_pos', '2');
 
 // Anti-spam Parameters
@@ -48,6 +47,7 @@ $please_complete_captcha_text = $params->get('please_complete_captcha_text', 'Pl
 
 // Module Class Suffix Parameter
 $mod_class_suffix = $params->get('moduleclass_sfx', '');
+$button_class = $params->get('button_class', 'btn btn-primary');
 
 $url = $params->get('fixed_url', false) ? 'action="' . $params->get('fixed_url_address', '') . '"' : '';
 
@@ -211,7 +211,7 @@ if ($anti_spam_position == 1) {
 }
 // print button
 print '<div class="input-group">';
-print '<input class="rapid_contact btn btn-primary button ' . $mod_class_suffix . '" type="submit" value="' . $buttonText . '"/>';
+print '<input class="rapid_contact button ' . $button_class . ' ' . $mod_class_suffix . '" type="submit" value="' . $buttonText . '"/>';
 print '</div>';
 print '</div></form></div>';
 return true;

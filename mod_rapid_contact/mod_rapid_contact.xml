@@ -7,7 +7,7 @@
     <license>GNU General Public License</license>
     <authorEmail>mavrosxristoforos@gmail.com</authorEmail>
     <authorUrl>https://mavrosxristoforos.com/</authorUrl>
-<version>1.4.26</version>
+<version>1.4.27</version>
     <description>Rapid Contact. Lightweight, fast and easy, configuring a contact form, was never a pleasure before.</description>
     <files>
         <filename module="mod_rapid_contact">mod_rapid_contact.php</filename>
@@ -66,6 +66,7 @@
     </fieldset>
     <fieldset name="advanced">
         <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="If you want to apply a custom style, change this class suffix." />
+        <field name="button_class" type="text" default="btn btn-primary" label="Button Class" description="You can customize the form button by changing these CSS classes."/>
         <field name="fixed_url" type="radio" default="0" class="btn-group btn-group-yesno" label="Fixed URL" description="A simple solution to people that want to use Rapid Contact in an exact page. Change this to Yes and write the URL of Rapid Contact in the Fixed URL Address parameter">
             <option value="0">JNO</option>
             <option value="1">JYES</option>
