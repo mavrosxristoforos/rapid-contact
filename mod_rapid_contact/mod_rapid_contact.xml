@@ -7,10 +7,11 @@
     <license>GNU General Public License</license>
     <authorEmail>mavrosxristoforos@gmail.com</authorEmail>
     <authorUrl>https://mavrosxristoforos.com/</authorUrl>
-<version>1.4.27</version>
+<version>1.4.36</version>
     <description>Rapid Contact. Lightweight, fast and easy, configuring a contact form, was never a pleasure before.</description>
     <files>
         <filename module="mod_rapid_contact">mod_rapid_contact.php</filename>
+        <folder>tmpl</folder>
     </files>
    <updateservers>
       <server type="extension" priority="1" name="Rapid Contact Updates">https://mavrosxristoforos.com/index.php?option=com_extensionupdater&amp;extension=rapid_contact</server>
@@ -56,13 +57,13 @@
             <option value="1">Anti-Spam Question</option>
             <option value="2">Captcha Plugin</option>
         </field>
-        <field name="anti_spam_q" type="text" default="How many eyes has a typical person?" label="Anti-Spam Question" description="A small text question, preventing you from every automated spam" />
-        <field name="anti_spam_a" type="text" default="2" label="Anti-Spam Answer" description="The correct answer to the anti-spam question" />
-        <field name="anti_spam_position" type="radio" default="1" class="btn-group" label="Anti-Spam Position" description="The anti-spam position, relative to the Rapid Contact form.">
+        <field name="anti_spam_q" type="text" default="How many eyes has a typical person?" label="Anti-Spam Question" description="A small text question, preventing you from every automated spam" showon="enable_anti_spam:1"/>
+        <field name="anti_spam_a" type="text" default="2" label="Anti-Spam Answer" description="The correct answer to the anti-spam question" showon="enable_anti_spam:1"/>
+        <field name="anti_spam_position" type="radio" default="1" class="btn-group" label="Anti-Spam Position" description="The anti-spam position, relative to the Rapid Contact form." showon="enable_anti_spam:1">
             <option value="0">Before</option>
             <option value="1">After</option>
         </field>
-        <field name="please_complete_captcha_text" type="text" default="Please complete the captcha" label="Please Complete Captcha Text" description="A small text to show when the user has not completed the captcha" />
+        <field name="please_complete_captcha_text" type="text" default="Please complete the captcha" label="Please Complete Captcha Text" description="A small text to show when the user has not completed the captcha" showon="enable_anti_spam:2"/>
     </fieldset>
     <fieldset name="advanced">
         <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="If you want to apply a custom style, change this class suffix." />
