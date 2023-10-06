@@ -12,13 +12,14 @@
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
+use \Joomla\CMS\Factory;
+
 $recipient = $params->get('email_recipient', 'email@email.com');
-
 $wrongantispamanswer = $params->get('wrong_antispam', 'Wrong anti-spam answer');
-
 $error_text_color = $params->get('error_text_color', '#FF0000');
-
 $url = $params->get('fixed_url', false) ? 'action="' . $params->get('fixed_url_address', '') . '"' : '';
+
+$input = Factory::getApplication()->input;
 
 $myError = '';
 $CORRECT_ANTISPAM_ANSWER = '';
@@ -27,16 +28,16 @@ $CORRECT_SUBJECT = '';
 $CORRECT_MESSAGE = '';
 $email_class = '';
 
-if (isset($_POST["rp_email"])) {
-  $CORRECT_SUBJECT = htmlentities($_POST["rp_subject"], ENT_COMPAT, "UTF-8");
-  $CORRECT_MESSAGE = htmlentities($_POST["rp_message"], ENT_COMPAT, "UTF-8");
+if ($input->exists('rp_email')) {
+  $CORRECT_SUBJECT = $input->get('rp_subject', '', 'string');
+  $CORRECT_MESSAGE = $input->get('rp_message', '', 'string');
   // check anti-spam
   if ($params->get('enable_anti_spam', '1') == '1') {
-    if (strtolower($_POST["rp_anti_spam_answer"]) != strtolower($params->get('anti_spam_a', '2'))) {
+    if (strtolower($input->get('rp_anti_spam_answer', '', 'string')) != strtolower($params->get('anti_spam_a', '2'))) {
       $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
     }
     else {
-      $CORRECT_ANTISPAM_ANSWER = htmlentities($_POST["rp_anti_spam_answer"], ENT_COMPAT, "UTF-8");
+      $CORRECT_ANTISPAM_ANSWER = $input->get('rp_anti_spam_answer', '', 'string');
     }
   }
   else if ($params->get('enable_anti_spam', '1') == '2') {
@@ -53,16 +54,17 @@ if (isset($_POST["rp_email"])) {
     }
   }
   // check email
-  if ($_POST["rp_email"] === "") {
+  $posted_email = $input->get('rp_email', '', 'string');
+  if ($posted_email === '') {
     $myError = '<span style="color: ' . $error_text_color . ';">' . $params->get('no_email', 'Please write your email') . '</span>';
     $email_class = ' has-error';
   }
-  if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,24})$/", strtolower($_POST["rp_email"]))) {
+  if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,24})$/", strtolower($posted_email))) {
     $myError = '<span style="color: ' . $error_text_color . ';">' . $params->get('invalid_email', 'Please write a valid email') . '</span>';
     $email_class = ' has-error';
   }
   else {
-    $CORRECT_EMAIL = htmlentities($_POST["rp_email"], ENT_COMPAT, "UTF-8");
+    $CORRECT_EMAIL = $posted_email;
   }
 
   if ($myError == '') {
@@ -73,13 +75,13 @@ if (isset($_POST["rp_email"])) {
 
     $mailSender->setSender(array($from_email, $params->get('from_name', 'Rapid Contact')));
     if(version_compare(JVERSION, '3.5', 'ge')) {
-      $mailSender->addReplyTo($_POST["rp_email"], $params->get('from_name', 'Rapid Contact'));
+      $mailSender->addReplyTo($posted_email, $params->get('from_name', 'Rapid Contact'));
     }
     else {
-      $mailSender->addReplyTo(array( $_POST["rp_email"], $params->get('from_name', 'Rapid Contact') ));
+      $mailSender->addReplyTo(array( $posted_email, $params->get('from_name', 'Rapid Contact') ));
     }
 
-    $mailSender->setSubject($_POST["rp_subject"]);
+    $mailSender->setSubject($input->get('rp_subject', '', 'string'));
 
     ob_start();
     require JModuleHelper::getLayoutPath('mod_rapid_contact', 'default_message_body');

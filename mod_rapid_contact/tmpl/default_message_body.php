@@ -12,5 +12,8 @@
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-print $params->get('email_pretext', 'You received a message from '). $_POST["rp_email"] . "\n\n";
-print $_POST["rp_message"];
+use \Joomla\CMS\Factory;
+$input = Factory::getApplication()->input;
+
+print $params->get('email_pretext', 'You received a message from '). $input->get('rp_email', '', 'string') . "\n\n";
+print $input->get('rp_message', '', 'string');
