@@ -10,18 +10,27 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Captcha\Captcha;
 
 ?>
 <div class="input-group">
-  <?php if ($params->get('enable_anti_spam', '1') == '2') { ?>
-    <?php if (JFactory::getConfig()->get('captcha') != '0') {
-      print JCaptcha::getInstance(JFactory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha');
+    <?php 
+        if ($enable_anti_spam == '2') { 
+            if (Factory::getConfig()->get('captcha') != '0') {
+                print Captcha::getInstance(Factory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha');
     ?>
-      <input type="hidden" name="<?php print $form_id; ?>'_hasCaptcha" id="<?php print $form_id; ?>_hasCaptcha" value="true"/>
-    <?php } ?>
-  <?php } else if ($params->get('enable_anti_spam', '1') == '1') { // Label as Placeholder option is intentionally overlooked. ?>
-    <label for="<?php print $form_id; ?>'_as_answer"><?php print $params->get('anti_spam_q', 'How many eyes has a typical person?'); ?></label>
-    <input class="rapid_contact form-control inputbox" type="text" name="rp_anti_spam_answer" id="<?php print $form_id; ?>_as_answer" size="<?php print $params->get('email_width', '15'); ?>" value="<?php print $CORRECT_ANTISPAM_ANSWER; ?>"/>
-  <?php } ?>
+    <input type="hidden" name="<?php print $form_id; ?>'_hasCaptcha" id="<?php print $form_id; ?>_hasCaptcha" value="true"/>
+    <?php 
+            }
+        } else if ($enable_anti_spam == '1') { // Label as Placeholder option is intentionally overlooked. 
+    ?>
+    <label for="<?php print $form_id; ?>'_as_answer"><?php print $myAntiSpamQuestion; ?></label>
+    <input class="rapid_contact form-control inputbox" type="text" name="rp_anti_spam_answer" id="<?php print $form_id; ?>_as_answer" size="<?php print $emailWidth; ?>" value="<?php print $CORRECT_ANTISPAM_ANSWER; ?>"/>
+    <?php 
+        }
+    ?>
 </div>
+

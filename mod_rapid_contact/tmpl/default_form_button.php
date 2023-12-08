@@ -10,9 +10,10 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
 
 ?>
 <div class="input-group">
-  <input class="rapid_contact button <?php print $params->get('button_class', 'btn btn-primary'); ?>" type="submit" value="<?php print $params->get('button_text', 'Send Message'); ?>"/>
+    <input class="rapid_contact button <?php print $buttonClass; ?>" type="submit" value="<?php print $buttonText; ?>"/>
 </div>
+

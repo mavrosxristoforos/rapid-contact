@@ -10,10 +10,11 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
 
 use \Joomla\CMS\Factory;
+
 $input = Factory::getApplication()->input;
 
-print $params->get('email_pretext', 'You received a message from '). $input->get('rp_email', '', 'string') . "\n\n";
+print $email_pretext . $input->get('rp_email', '', 'string') . "\n\n";
 print $input->get('rp_message', '', 'string');
