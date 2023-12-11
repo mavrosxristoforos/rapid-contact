@@ -10,7 +10,7 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
 
 ?>
 <span style="color: <?php print $params->get('thank_text_color', '#FF0000'); ?>;"><?php print $params->get('page_text', 'Thank you for your contact.'); ?></span>

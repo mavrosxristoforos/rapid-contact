@@ -10,13 +10,15 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
+
+use \Joomla\CMS\Factory;
 
 ?>
 <div class="input-group">
   <?php if ($params->get('enable_anti_spam', '1') == '2') { ?>
-    <?php if (JFactory::getConfig()->get('captcha') != '0') {
-      print JCaptcha::getInstance(JFactory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha');
+    <?php if (Factory::getConfig()->get('captcha') != '0') {
+      print JCaptcha::getInstance(Factory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha');
     ?>
       <input type="hidden" name="<?php print $form_id; ?>'_hasCaptcha" id="<?php print $form_id; ?>_hasCaptcha" value="true"/>
     <?php } ?>

@@ -10,9 +10,10 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
 
 use \Joomla\CMS\Factory;
+use \Joomla\CMS\Helper\ModuleHelper;
 
 $recipient = $params->get('email_recipient', 'email@email.com');
 $wrongantispamanswer = $params->get('wrong_antispam', 'Wrong anti-spam answer');
@@ -41,10 +42,10 @@ if ($input->exists('rp_email')) {
     }
   }
   else if ($params->get('enable_anti_spam', '1') == '2') {
-    if (JFactory::getConfig()->get('captcha') != '0') {
-      $captcha = JCaptcha::getInstance(JFactory::getConfig()->get('captcha'));
+    if (Factory::getConfig()->get('captcha') != '0') {
+      $captcha = JCaptcha::getInstance(Factory::getConfig()->get('captcha'));
       try {
-        if (!$captcha->checkAnswer(JFactory::getApplication()->input->get('rp_recaptcha', null, 'string'))) {
+        if (!$captcha->checkAnswer(Factory::getApplication()->input->get('rp_recaptcha', null, 'string'))) {
           $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
         }
       }
@@ -68,10 +69,10 @@ if ($input->exists('rp_email')) {
   }
 
   if ($myError == '') {
-    $mailSender = JFactory::getMailer();
+    $mailSender = Factory::getMailer();
     $mailSender->addRecipient($recipient);
 
-    $from_email = ($params->get('from_email', 'rapid_contact@yoursite.com') == 'rapid_contact@yoursite.com') ? JFactory::getApplication()->getCfg('mailfrom') : $params->get('from_email', 'rapid_contact@yoursite.com');
+    $from_email = ($params->get('from_email', 'rapid_contact@yoursite.com') == 'rapid_contact@yoursite.com') ? Factory::getApplication()->getCfg('mailfrom') : $params->get('from_email', 'rapid_contact@yoursite.com');
 
     $mailSender->setSender(array($from_email, $params->get('from_name', 'Rapid Contact')));
     if(version_compare(JVERSION, '3.5', 'ge')) {
@@ -84,7 +85,7 @@ if ($input->exists('rp_email')) {
     $mailSender->setSubject($input->get('rp_subject', '', 'string'));
 
     ob_start();
-    require JModuleHelper::getLayoutPath('mod_rapid_contact', 'default_message_body');
+    require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_message_body');
     $myMessage = ob_get_clean();
     $mailSender->setBody($myMessage);
 
@@ -93,7 +94,7 @@ if ($input->exists('rp_email')) {
       return true;
     }
     else {
-      require JModuleHelper::getLayoutPath('mod_rapid_contact', 'default_thank_you');
+      require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_thank_you');
       return true;
     }
 
@@ -106,4 +107,4 @@ if ($recipient === "email@email.com") {
   return true;
 }
 
-require JModuleHelper::getLayoutPath('mod_rapid_contact');
+require ModuleHelper::getLayoutPath('mod_rapid_contact');

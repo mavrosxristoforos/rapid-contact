@@ -10,9 +10,12 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
 
-$document = JFactory::getDocument();
+use \Joomla\CMS\Factory;
+use \Joomla\CMS\Helper\ModuleHelper;
+
+$document = Factory::getDocument();
 $document->addStyleDeclaration('
   .rapid_contact .form-control { max-width: 95%; margin-bottom: 8px; }
   .rapid_contact .g-recaptcha { margin-bottom: 10px; max-width: 95%; }
@@ -47,7 +50,7 @@ $form_id = 'rp_'.random_int(1,999999);
     <?php if ($myError != '') { print $myError; } ?>
 
     <div class="rapid_contact_form" id="rapid_contact_form_<?php print $form_id; ?>">
-      <?php require JModuleHelper::getLayoutPath('mod_rapid_contact', 'default_form'); ?>
+      <?php require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_form'); ?>
     </div>
   </form>
 </div>

@@ -10,7 +10,7 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
 
 use \Joomla\CMS\Factory;
 $input = Factory::getApplication()->input;

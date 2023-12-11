@@ -10,13 +10,15 @@
 -------------------------------------------------------------------------*/
 
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+\defined( '_JEXEC' ) or die( 'Restricted access' );
+
+use \Joomla\CMS\Helper\ModuleHelper;
 
 $label_pos = $params->get('label_pos', '2');
 
 // print anti-spam
 if ($params->get('anti_spam_position', 0) == 0) {
-  require JModuleHelper::getLayoutPath('mod_rapid_contact', 'default_anti_spam');
+  require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_anti_spam');
 }
 
 // print email input
@@ -46,7 +48,7 @@ print '</div>';
 
 //print anti-spam
 if ($params->get('anti_spam_position', 0) == 1) {
-  require JModuleHelper::getLayoutPath('mod_rapid_contact', 'default_anti_spam');
+  require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_anti_spam');
 }
 
-require JModuleHelper::getLayoutPath('mod_rapid_contact', 'default_form_button');
+require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_form_button');
