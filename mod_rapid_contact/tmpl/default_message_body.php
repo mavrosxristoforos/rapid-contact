@@ -14,7 +14,5 @@
 
 use \Joomla\CMS\Factory;
 
-$input = Factory::getApplication()->input;
-
 print $email_pretext . $input->get('rp_email', '', 'string') . "\n\n";
 print $input->get('rp_message', '', 'string');

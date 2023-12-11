@@ -28,7 +28,7 @@ use Joomla\CMS\Captcha\Captcha;
         } else if ($enable_anti_spam == '1') { // Label as Placeholder option is intentionally overlooked. 
     ?>
     <label for="<?php print $form_id; ?>'_as_answer"><?php print $myAntiSpamQuestion; ?></label>
-    <input class="rapid_contact form-control inputbox" type="text" name="rp_anti_spam_answer" id="<?php print $form_id; ?>_as_answer" size="<?php print $emailWidth; ?>" value="<?php print $CORRECT_ANTISPAM_ANSWER; ?>"/>
+    <input class="rapid_contact form-control inputanswer" type="text" name="rp_anti_spam_answer" id="<?php print $form_id; ?>_as_answer" size="<?php print $emailWidth; ?>" value="<?php print $CORRECT_ANTISPAM_ANSWER; ?>"/>
     <?php 
         }
     ?>

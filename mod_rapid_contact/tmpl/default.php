@@ -16,56 +16,9 @@
 // no direct access
 \defined('_JEXEC') or die('Restricted access');
 
-use Joomla\CMS\Captcha\Captcha;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ModuleHelper;
-
-//Email Parameters
-$recipient = $params->get('email_recipient', 'email@email.com');
-$fromName  = $params->get('from_name', 'Rapid Contact');
-$fromEmail = ($params->get('from_email', 'rapid_contact@yoursite.com') == 'rapid_contact@yoursite.com') ? Factory::getApplication()->getCfg('mailfrom') : $params->get('from_email', 'rapid_contact@yoursite.com');
-
-// Text Parameters
-$myEmailLabel        = $params->get('email_label', 'email@site.com');
-$mySubjectLabel      = $params->get('subject_label', 'Subject');
-$myMessageLabel      = $params->get('message_label', 'Your Message');
-$buttonText          = $params->get('button_text', 'Send Message');
-$pageText            = $params->get('page_text', 'Thank you for your contact.');
-$errorText           = $params->get('error_text', 'Your message could not be sent. Please try again.');
-$noEmail             = $params->get('no_email', 'Please write your email.');
-$invalidEmail        = $params->get('invalid_email', 'Please write a valid email.');
-$wrongantispamanswer = $params->get('wrong_antispam', 'Wrong anti-spam answer.');
-$pre_text            = $params->get('pre_text', '');
-$email_pretext       = $params->get('email_pretext', 'You received a message from ');
-
-// Format Parameters
-$thanksTextColor  = $params->get('thank_text_color', '#FF0000');
-$error_text_color = $params->get('error_text_color', '#FF0000');
-$emailWidth       = $params->get('email_width', '15');
-$subjectWidth     = $params->get('subject_width', '15');
-$messageWidth     = $params->get('message_width', '13');
-$buttonWidth      = $params->get('button_width', '100');
-$label_pos        = $params->get('label_pos', '2');
-$addCSS           = $params->get('addcss', '');
-
-// Anti-spam Parameters
-$enable_anti_spam             = $params->get('enable_anti_spam', '1');
-$myAntiSpamQuestion           = $params->get('anti_spam_q', 'How many eyes has a typical person?');
-$myAntiSpamAnswer             = $params->get('anti_spam_a', '2');
-$anti_spam_position           = $params->get('anti_spam_position', 0);
-$please_complete_captcha_text = $params->get('please_complete_captcha_text', 'Please complete the Captcha');
-
-// Advanced
-$mod_class_suffix = $params->get('moduleclass_sfx', '');
-$buttonClass      = $params->get('button_class', 'btn btn-primary');
-$url              = $params->get('fixed_url', false) ? 'action="' . $params->get('fixed_url_address', '') . '"' : '';
-
-$myError                 = '';
-$CORRECT_ANTISPAM_ANSWER = '';
-$CORRECT_EMAIL           = '';
-$CORRECT_SUBJECT         = '';
-$CORRECT_MESSAGE         = '';
-$email_class             = '';
+use Joomla\CMS\Captcha\Captcha;
 
 if ($input->exists('rp_email')) {
     $CORRECT_SUBJECT = $input->get('rp_subject', '', 'string');
@@ -121,8 +74,7 @@ if ($input->exists('rp_email')) {
 
 
         if ($mailSender->Send() !== true) {
-            $myReplacement = '<span style="color: ' . $error_text_color . ';">' . $errorText . '</span>';
-            print $myReplacement;
+            print '<span style="color: ' . $error_text_color . ';">' . $errorText . '</span>';
             return true;
         } else {
             require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_thank_you');
@@ -142,7 +94,9 @@ $document = Factory::getDocument();
 $document->addStyleDeclaration(
     '
         .rapid_contact .form-control { max-width: 95%; margin-bottom: 8px; }
-        .rapid_contact .g-recaptcha { margin-bottom: 10px; max-width: 95%; }
+        input.rapid_contact.inputanswer.form-control { max-width: fit-content; margin: 0 0 8px 8px !important; border-radius: var(--border-radius) !important; }
+        .rapid_contact span { display: inline-block; margin-bottom: 8px;}
+        .rapid_contact .g-recaptcha { max-width: 95%;  margin-bottom: 10px;}
     '
 );
 if ($addCSS != '') {
@@ -173,13 +127,6 @@ if ($myError != '') {
 
 print '<div class="rapid_contact_form" id="rapid_contact_form_'.$form_id.'">';
 
-$anti_spam_field = '';
-if ($enable_anti_spam == '2') {
-    $anti_spam_field = (Factory::getConfig()->get('captcha') != '0') ? Captcha::getInstance(Factory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha') : '';
-    $anti_spam_field .= '<input type="hidden" name="'.$form_id.'_hasCaptcha" id="'.$form_id.'_hasCaptcha" value="true"/>';
-} else if ($enable_anti_spam == '1') {
-    // Label as Placeholder option is intentionally overlooked.
-    $anti_spam_field = '<label for="'.$form_id.'_as_answer">'.$myAntiSpamQuestion.'</label><input class="rapid_contact form-control inputbox ' . $mod_class_suffix . '" type="text" name="rp_anti_spam_answer" id="'.$form_id.'_as_answer" size="' . $emailWidth . '" value="'.$CORRECT_ANTISPAM_ANSWER.'"/>';
-}
-
 require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_form');
+
+print '</div>';
