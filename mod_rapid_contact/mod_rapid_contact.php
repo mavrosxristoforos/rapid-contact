@@ -89,13 +89,19 @@ if ($input->exists('rp_email')) {
     $myMessage = ob_get_clean();
     $mailSender->setBody($myMessage);
 
-    if ($mailSender->Send() !== true) {
-      print '<span style="color: ' . $error_text_color . ';">' . $params->get('error_text', 'Your message could not be sent. Please try again.') . '</span>';
-      return true;
+    try {
+      if ($mailSender->Send() !== true) {
+        print '<span style="color: ' . $error_text_color . ';">' . $params->get('error_text', 'Your message could not be sent. Please try again.') . '</span>';
+        return true;
+      }
+      else {
+        require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_thank_you');
+        return true;
+      }
     }
-    else {
-      require ModuleHelper::getLayoutPath('mod_rapid_contact', 'default_thank_you');
-      return true;
+    catch(\Throwable $e) {
+      print '<span style="color: ' . $error_text_color . ';">' . $params->get('error_text', 'Your message could not be sent. Please try again.') . '</span>';
+      print '<br/><span style="color: ' . $error_text_color . ';">' . $e->getMessage() . '</span>';
     }
 
   }
