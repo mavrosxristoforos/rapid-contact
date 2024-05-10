@@ -13,12 +13,13 @@
 \defined( '_JEXEC' ) or die( 'Restricted access' );
 
 use \Joomla\CMS\Factory;
+use \Joomla\CMS\Captcha\Captcha;
 
 ?>
 <div class="input-group">
   <?php if ($params->get('enable_anti_spam', '1') == '2') { ?>
     <?php if (Factory::getConfig()->get('captcha') != '0') {
-      print JCaptcha::getInstance(Factory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha');
+      print Captcha::getInstance(Factory::getConfig()->get('captcha'))->display('rp_recaptcha', 'rp_recaptcha', 'g-recaptcha');
     ?>
       <input type="hidden" name="<?php print $form_id; ?>'_hasCaptcha" id="<?php print $form_id; ?>_hasCaptcha" value="true"/>
     <?php } ?>

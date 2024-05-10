@@ -14,6 +14,7 @@
 
 use \Joomla\CMS\Factory;
 use \Joomla\CMS\Helper\ModuleHelper;
+use \Joomla\CMS\Captcha\Captcha;
 
 $recipient = $params->get('email_recipient', 'email@email.com');
 $wrongantispamanswer = $params->get('wrong_antispam', 'Wrong anti-spam answer');
@@ -43,7 +44,7 @@ if ($input->exists('rp_email')) {
   }
   else if ($params->get('enable_anti_spam', '1') == '2') {
     if (Factory::getConfig()->get('captcha') != '0') {
-      $captcha = JCaptcha::getInstance(Factory::getConfig()->get('captcha'));
+      $captcha = Captcha::getInstance(Factory::getConfig()->get('captcha'));
       try {
         if (!$captcha->checkAnswer(Factory::getApplication()->input->get('rp_recaptcha', null, 'string'))) {
           $myError = '<span style="color: ' . $error_text_color . ';">' . $wrongantispamanswer . '</span>';
