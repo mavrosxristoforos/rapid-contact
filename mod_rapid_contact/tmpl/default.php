@@ -40,7 +40,7 @@ $document->addScriptDeclaration('
 
 $form_id = 'rp_'.random_int(1,999999);
 ?>
-<div class="rapid_contact '<?php print $params->get('moduleclass_sfx', ''); ?>">
+<div class="rapid_contact <?php print $params->get('moduleclass_sfx', ''); ?>">
   <form <?php print $url; ?> id="<?php print $form_id; ?>" method="post" onSubmit="return rp_checkCaptcha('<?php print $form_id; ?>');">
 
     <?php if ($params->get('pre_text', '') != '') {
